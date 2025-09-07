@@ -25,6 +25,49 @@ terraform init
 terraform destroy
 ```
 
+## Update kubeconfig file
+
+```bash
+# Select AWS default profile
+export AWS_DEFAULT_PROFILE=
+
+# Update kubeconfig
+aws eks update-kubeconfig --name my-eks-name
+```
+
+## Deploy ArgoCD
+
+```bash
+# Install ArgoCD
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# Get ArgoCD admin password
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+# Initialize Port Forwarding
+kubectl -n argocd port-forward svc/argocd-server 8080:443
+```
+
+## Deploy Cluster Autoscaler
+
+```bash
+# Install Cluster Autoscaler
+curl -LO https://raw.githubusercontent.com/kubernetes/autoscaler/refs/tags/cluster-autoscaler-1.33.0/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+sed -i 's/<YOUR CLUSTER NAME>/--><YOUR_CLUSTER_NAME><--/g' cluster-autoscaler-autodiscover.yaml
+kubectl apply -f cluster-autoscaler-autodiscover.yaml
+
+# Deploy Pod Identity for cluster-autoscaler
+eksctl create podidentityassociation \
+--cluster my-eks-name \
+--namespace kube-system \
+--service-account-name cluster-autoscaler \
+--role-arn --><ROLE_ARN><--
+
+# Restart cluster-autoscaler Deployment
+kubectl rollout restart deployment cluster-autoscaler -n kube-system
+```
+
 ## *Generate docs*
 
 ```shell
@@ -43,7 +86,7 @@ terraform-docs -c .terraform-docs.yml .
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 6.4.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | n/a |
+| <a name="provider_http"></a> [http](#provider\_http) | 3.5.0 |
 
 ## Modules
 
