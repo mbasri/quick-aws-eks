@@ -47,13 +47,13 @@ output:
     ```
 
     ## Update kubeconfig file
-    
+
     ```bash
     # Select AWS default profile
     export AWS_DEFAULT_PROFILE=
 
     # Update kubeconfig
-    aws eks update-kubeconfig --name my-eks-name
+    aws eks update-kubeconfig --name quick-aws-eks
     ```
 
     ## Deploy ArgoCD

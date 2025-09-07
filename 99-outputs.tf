@@ -118,6 +118,36 @@ output "cluster_iam_role_unique_id" {
   value       = module.eks.cluster_iam_role_unique_id
 }
 
+output "pod_identity_cluster_autoscaler_name" {
+  description = "Name of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
+  value       = module.eks.pod_identity_cluster_autoscaler_name
+}
+
+output "pod_identity_cluster_autoscaler_arn" {
+  description = "ARN of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
+  value       = module.eks.pod_identity_cluster_autoscaler_arn
+}
+
+output "pod_identity_cluster_autoscaler_id" {
+  description = "Unique ID of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
+  value       = module.eks.pod_identity_cluster_autoscaler_id
+}
+
+output "pod_identity_alb_name" {
+  description = "Name of the IAM role for EKS Pod Identity used by the ALB controller"
+  value       = module.eks.pod_identity_alb_name
+}
+
+output "pod_identity_alb_arn" {
+  description = "ARN of the IAM role for EKS Pod Identity used by the ALB controller"
+  value       = module.eks.pod_identity_alb_arn
+}
+
+output "pod_identity_alb_id" {
+  description = "Unique ID of the IAM role for EKS Pod Identity used by the ALB controller"
+  value       = module.eks.pod_identity_alb_id
+}
+
 # EKS Cluster
 output "cluster_name" {
   description = "Name of the EKS cluster"

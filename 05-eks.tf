@@ -12,7 +12,7 @@ module "eks" {
   deletion_protection = false
 
   subnet_ids              = module.vpc.private_subnet_ids
-  endpoint_private_access = false
+  endpoint_private_access = true
   endpoint_public_access  = true
 
   public_access_cidrs = [

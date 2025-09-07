@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scaling-test
+  namespace: scaling-test
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: scaling-test
+  template:
+    metadata:
+      labels:
+        app: scaling-test
+    spec:
+      containers:
+      - name: scaling-test
+        image: nginx
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"

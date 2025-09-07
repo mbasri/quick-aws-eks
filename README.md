@@ -32,7 +32,7 @@ terraform destroy
 export AWS_DEFAULT_PROFILE=
 
 # Update kubeconfig
-aws eks update-kubeconfig --name my-eks-name
+aws eks update-kubeconfig --name quick-aws-eks
 ```
 
 ## Deploy ArgoCD
@@ -134,6 +134,12 @@ No inputs.
 | <a name="output_nat_gateway_public_ips"></a> [nat\_gateway\_public\_ips](#output\_nat\_gateway\_public\_ips) | Private IP of NAT Gateway |
 | <a name="output_ondemand_node_group_arn"></a> [ondemand\_node\_group\_arn](#output\_ondemand\_node\_group\_arn) | ARN of the OnDemand EKS Node Group |
 | <a name="output_ondemand_node_group_id"></a> [ondemand\_node\_group\_id](#output\_ondemand\_node\_group\_id) | ID of the OnDemand EKS Node Group |
+| <a name="output_pod_identity_alb_arn"></a> [pod\_identity\_alb\_arn](#output\_pod\_identity\_alb\_arn) | ARN of the IAM role for EKS Pod Identity used by the ALB controller |
+| <a name="output_pod_identity_alb_id"></a> [pod\_identity\_alb\_id](#output\_pod\_identity\_alb\_id) | Unique ID of the IAM role for EKS Pod Identity used by the ALB controller |
+| <a name="output_pod_identity_alb_name"></a> [pod\_identity\_alb\_name](#output\_pod\_identity\_alb\_name) | Name of the IAM role for EKS Pod Identity used by the ALB controller |
+| <a name="output_pod_identity_cluster_autoscaler_arn"></a> [pod\_identity\_cluster\_autoscaler\_arn](#output\_pod\_identity\_cluster\_autoscaler\_arn) | ARN of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
+| <a name="output_pod_identity_cluster_autoscaler_id"></a> [pod\_identity\_cluster\_autoscaler\_id](#output\_pod\_identity\_cluster\_autoscaler\_id) | Unique ID of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
+| <a name="output_pod_identity_cluster_autoscaler_name"></a> [pod\_identity\_cluster\_autoscaler\_name](#output\_pod\_identity\_cluster\_autoscaler\_name) | Name of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
 | <a name="output_private_subnet_cidr"></a> [private\_subnet\_cidr](#output\_private\_subnet\_cidr) | List of cidr\_blocks of private subnets |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | List of IDs of private subnets |
 | <a name="output_public_subnet_cidr"></a> [public\_subnet\_cidr](#output\_public\_subnet\_cidr) | List of cidr\_blocks of public subnets |
