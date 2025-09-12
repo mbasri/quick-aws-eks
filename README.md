@@ -38,9 +38,11 @@ aws eks update-kubeconfig --name quick-aws-eks
 ## Deploy ArgoCD
 
 ```bash
-# Install ArgoCD
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# Install ArgoCD using Kustomize
+kubectl apply -k k8s.d/argocd/base
+
+# Deploy ArgoCD self-managed application
+kubectl apply -k argocd.d/argocd-self-managed/base
 
 # Get ArgoCD admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
