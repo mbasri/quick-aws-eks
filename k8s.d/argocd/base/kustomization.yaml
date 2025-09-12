@@ -5,5 +5,5 @@ namespace: argocd
 
 resources:
   - namespace.yaml
-  - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v3.1.5/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v3.1.4/manifests/install.yaml
   #- https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
