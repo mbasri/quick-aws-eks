@@ -23,5 +23,8 @@ module "eks" {
     data.aws_caller_identity.current.arn
   ]
 
+  enable_autoscaler_pod_identity  = true
+  enable_alb_pod_identity         = true
+
   tags = local.tags
 }
