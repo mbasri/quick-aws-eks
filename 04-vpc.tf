@@ -17,15 +17,15 @@ module "vpc" {
   bucket_arn_vpc_flow_logs        = null
   bucket_arn_resolvers_logs       = null
 
-  vpc_cidr = "10.170.32.0/22"
+  vpc_cidr = "10.0.0.0/22"
 
-  availability_zones = ["eu-west-3a", "eu-west-3b"]
+  availability_zones = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
 
-  public_subnet_cidr  = ["10.170.35.0/26", "10.170.35.64/26"]
-  private_subnet_cidr = ["10.170.32.0/24", "10.170.33.0/24"]
-  secure_subnet_cidr  = ["10.170.34.0/25", "10.170.34.128/25"]
+  public_subnet_cidr  = ["10.0.0.0/25", "10.0.0.128/25", "10.0.1.0/25"]
+  private_subnet_cidr = ["10.0.1.128/25", "10.0.2.0/25", "10.0.2.128/25"]
+  secure_subnet_cidr  = []
   vpn_subnet_cidr     = []
-  spare_subnet_cidr   = ["10.170.35.192/27", "10.170.35.224/27"]
+  spare_subnet_cidr   = ["10.0.3.0/24"]
 
   tags = local.tags
 }
