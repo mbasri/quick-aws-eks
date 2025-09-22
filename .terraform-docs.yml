@@ -72,6 +72,20 @@ output:
     kubectl -n argocd port-forward svc/argocd-server 8080:443
     ```
 
+    ## Deploy self hostes github actions runner
+
+    ```bash
+    # Install GitHub ARC using Kustomize
+    kubectl apply -k k8s.d/github-self-hosted-runner/actions-runner-controler/base
+
+    #
+
+    #
+
+    #
+
+    ```
+
     ## Deploy Cluster Autoscaler
     
     ```bash

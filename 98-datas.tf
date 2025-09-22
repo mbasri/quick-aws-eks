@@ -8,5 +8,5 @@ data "aws_caller_identity" "current" {
 # Get public IP
 #---------------------------------------------------------------------------------------------------
 data "http" "myip" {
-  url = "http://icanhazip.com"
+  url = "http://ipv4.icanhazip.com"
 }
