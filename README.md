@@ -51,6 +51,32 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
 
+## Deploy self hostes github actions runner
+
+```bash
+# Install GitHub ARC using Helm
+NAMESPACE="arc-systems"
+helm install arc \
+    --namespace "${NAMESPACE}" \
+    --create-namespace \
+    --version 0.12.1 \
+    --values helm.d/gha-runner-scale-set-controller-values.yaml \
+    oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+
+# Install GitHub runner scale settings
+INSTALLATION_NAME="arc-runner-set"
+NAMESPACE="arc-runners"
+GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
+GITHUB_PAT="<PAT>"
+helm install "${INSTALLATION_NAME}" \
+  --namespace "${NAMESPACE}" \
+  --create-namespace \
+  --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+  --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+  oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+
+```
+
 ## Deploy Cluster Autoscaler
 
 ```bash
