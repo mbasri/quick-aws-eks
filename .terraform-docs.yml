@@ -76,7 +76,7 @@ output:
 
     ```bash
     # Install GitHub ARC using Kustomize
-    kubectl apply -k k8s.d/github-self-hosted-runner/actions-runner-controler/base
+    kustomize build k8s.d/github-self-hosted-runner/actions-runner-controler/base --enable-helm | kubectl apply -f -
 
     #
 
