@@ -66,15 +66,15 @@ helm install arc \
 # Install GitHub runner scale settings
 INSTALLATION_NAME="arc-runner-set"
 NAMESPACE="arc-runners"
-GITHUB_CONFIG_URL="https://github.com/<your_enterprise/org/repo>"
+GITHUB_CONFIG_URL="https://github.com/mbasri/quick-aws-eks"
 GITHUB_PAT="<PAT>"
 helm install "${INSTALLATION_NAME}" \
   --namespace "${NAMESPACE}" \
   --create-namespace \
   --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
   --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+  --values helm.d/gha-runner-scale-set-values.yaml \
   oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
-
 ```
 
 ## Deploy Cluster Autoscaler
