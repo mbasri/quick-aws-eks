@@ -51,9 +51,11 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
 
-## Deploy self hosted Github actions runner from [https://docs.github.com/en/actions/tutorials/use-actions-runner-controller/quickstart](https://docs.github.com/en/actions/tutorials/use-actions-runner-controller/quickstart)
+## Deploy self hosted Github actions runner
 
 ```bash
+# https://docs.github.com/en/actions/tutorials/use-actions-runner-controller/quickstart
+
 # Install GitHub ARC using Helm
 NAMESPACE="arc-systems"
 helm install arc \
