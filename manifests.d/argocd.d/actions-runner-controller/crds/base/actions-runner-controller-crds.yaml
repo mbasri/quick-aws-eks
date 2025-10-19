@@ -1,20 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: actions-runner-controller
+  name: actions-runner-controller-crds
   namespace: arc-system
 spec:
   project: default
   source:
     repoURL: https://github.com/mbasri/quick-aws-eks
     targetRevision: main
-    path: manifests.d/k8s.d/actions-runner-controller/controller/base
+    path: manifests.d/k8s.d/actions-runner-controller/crds
   destination:
     server: https://kubernetes.default.svc
     namespace: arc-system
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - Replace=true
