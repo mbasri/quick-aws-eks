@@ -39,10 +39,10 @@ aws eks update-kubeconfig --name quick-aws-eks
 
 ```bash
 # Install ArgoCD using Kustomize
-kubectl apply -k k8s.d/argocd/base
+kubectl apply -k manifests.d/k8s.d/argocd/base
 
 # Deploy ArgoCD self-managed application
-kubectl apply -k argocd.d/argocd-self-managed/base
+kubectl apply -k manifests.d/argocd.d/argocd-self-managed/base
 
 # Get ArgoCD admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
@@ -55,7 +55,7 @@ kubectl -n argocd port-forward svc/argocd-server 8080:443
 
 ```bash
 # Deploy Action Runner Controller self-managed
-kubectl apply -k argocd.d/actions-runner-controller/controller/base
+kubectl apply -k manifests.d/argocd.d/actions-runner-controller/controller/base
 ```
 
 # ## Deploy self hosted Github actions runner
@@ -69,7 +69,7 @@ kubectl apply -k argocd.d/actions-runner-controller/controller/base
 #     --namespace "${NAMESPACE}" \
 #     --create-namespace \
 #     --version 0.12.1 \
-#     --values helm.d/gha-runner-scale-set-controller-values.yaml \
+#     --values manifests.d/helm.d/gha-runner-scale-set-controller-values.yaml \
 #     oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
 
 # # Install GitHub runner scale settings
@@ -82,7 +82,7 @@ kubectl apply -k argocd.d/actions-runner-controller/controller/base
 #   --create-namespace \
 #   --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
 #   --set githubConfigSecret.github_token="${GITHUB_PAT}" \
-#   --values helm.d/gha-runner-scale-set-values.yaml \
+#   --values manifests.d/helm.d/gha-runner-scale-set-values.yaml \
 #   oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
 # ```
 
