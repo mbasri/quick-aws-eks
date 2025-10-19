@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mbasri/quick-aws-eks
     targetRevision: main
-    path: manifests.d/k8s.d/actions-runner-controller/crds
+    path: manifests.d/k8s.d/actions-runner-controller/crds/base
   destination:
     server: https://kubernetes.default.svc
     namespace: arc-system
