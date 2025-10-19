@@ -13,4 +13,4 @@ helmCharts:
     releaseName: actions-runner-controller
     namespace: arc-system
     valuesFile: values.yaml
-    includeCRDs: true
+    includeCRDs: false
