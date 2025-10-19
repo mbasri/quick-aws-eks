@@ -75,9 +75,6 @@ output:
     ## Deploy Action Runner Controller self-managed
 
     ```bash
-    # Deploy Action Runner Controller CRDs (metadata.annotations: Too long: may not be more than 262144 bytes)
-    kubectl apply -k manifests.d/argocd.d/actions-runner-controller/crds/base
-
     # Deploy Action Runner Controller self-managed
     kubectl apply -k manifests.d/argocd.d/actions-runner-controller/controller/base
     ```
