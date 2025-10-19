@@ -5,3 +5,12 @@ namespace: arc-system
 
 resources:
   - namespace.yaml
+
+helmCharts:
+  - name: gha-runner-scale-set-controller
+    repo: oci://ghcr.io/actions/actions-runner-controller-charts
+    version: 0.13.0
+    releaseName: actions-runner-controller
+    namespace: arc-system
+    valuesFile: values.yaml
+    includeCRDs: true
