@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actions-runner-scales-set
+  namespace: arc-system
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mbasri/quick-aws-eks
+    targetRevision: main
+    path: manifests.d/k8s.d/actions-runner-controller/scales-set/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arc-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
